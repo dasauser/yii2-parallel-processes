@@ -5,11 +5,18 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'container' => [
+        'singletons' => [
+            'yii\queue\Queue' => fn() => Yii::$container->get('\yii\queue\file\Queue'),
+            'app\services\DataStorage' => fn() => Yii::$container->get('\app\services\FileDataStorage'),
+        ],
+    ],
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@runtime' => '@app/runtime',
     ],
     'components' => [
         'request' => [
