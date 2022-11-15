@@ -18,6 +18,6 @@ abstract class PriorityServiceAbstract
             throw new \Exception('oops, fail((');
         }
 
-        return $rand;
+        return get_class($this) . ': ' . $rand;
     }
 }
