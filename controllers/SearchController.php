@@ -21,6 +21,9 @@ class SearchController extends Controller
             new LowPriorityService()
         ];
 
+        /**
+         * @var \app\services\PriorityServiceAbstract $service
+         */
         foreach ($searchServices as $service) {
             return $service->handle();
         }
